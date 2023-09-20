@@ -1,0 +1,25 @@
+.chatBot {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .side {
+    min-width: 420px;
+    height: 100%;
+    position: relative;
+    .bg {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.2;
+      background: url("themes/logo.svg") left bottom no-repeat;
+    }
+  }
+
+  .chat {
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+  }
+}

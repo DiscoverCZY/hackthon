@@ -1,0 +1,167 @@
+
+.chat {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    position: relative;
+    font-size: 16px;
+    .toolbar{
+      .actions {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border: 1px solid #eee;
+        border-left: 3px solid #42a5f5;
+        border-radius: 0 .7em .7em 0;
+      }
+    }
+
+    .chatBox {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      flex-direction: column;
+      background-color: #fff;
+      position: relative;
+      line-height: 24px;
+      font-size: 16px;
+      .end {
+        height: 1px;
+      }
+    }
+    
+    .chatLog {
+      height: 100%;
+      overflow: auto;
+      padding: 8px 12px;
+      .message {
+        box-sizing: border-box;
+        margin: .4em 0 0;
+        display: flex;
+        flex-direction: row;
+        &:first-child {
+          margin-top: 24px;
+        }
+        .avatar {
+          width: 36px;
+          height: 36px;
+          margin-right: 5px;
+        }
+        .loading {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          padding: 10px;
+        }
+        .messageContent {
+          text-align: left;
+          align-items: center;
+          box-sizing: border-box;
+          padding: .6em .9em;
+          white-space: pre-wrap;
+          overflow-wrap: anywhere;
+          word-break: break-word;
+          font-size: .91em;
+          .content {
+            width: 100%;
+          }
+        }
+        &.sys {
+          margin-left: auto;
+          max-width: 85%;
+          justify-content: flex-end;
+          .messageContent {
+            background-color: #a5d6a7;
+            border-radius: .7em .7em 0 .7em;
+          }
+        }
+        &.ai {
+          width: 100%;
+          position: relative;
+          .avatar {
+            margin-top: -18px;
+          }
+          .messageContent {
+            background-color: #eceff1;
+            border-radius: 0 .7em .7em .7em;
+            text-align: left;
+            display: flex;
+            justify-content: left;
+            width: 100%;
+            column-gap: 25px;
+          }
+        }
+        .errorMessage {
+          color: #f44336;
+          line-height: 24px;
+        }
+      }
+    }
+  
+    .promptFrom {
+      margin: 20px 5px 10px 10px;
+  
+      .inputPromptWrapper {
+        display: flex;
+        position: relative;
+        width: 100%;
+  
+        .inputPrompttTextarea {
+          padding: 10px;
+          flex: 1;
+          resize: none;
+          background-color: #e3f2fd;
+          color: #616161;
+          font-size: 14px;
+          outline: none;
+          border: none;
+          border-radius: 5px;
+          overflow-y: hidden;
+        }
+      }
+  
+      .send {
+        border: none;
+        position: absolute;
+        top: 20%;
+        right: 15px;
+        width: 35px;
+        height: 45px;
+      }
+    }
+
+    .question {
+      .link {
+        + .link {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+  
+  
+  #introsection {
+    text-align: left;
+    padding: 20px;
+    &::before,
+    &::after {
+      content: "";
+      float: left;
+      color: rgb(0, 134, 244);
+    }
+    h1 {
+      padding-top: 20px;
+      line-height: 33px;
+    }
+    h2 {
+      font-size: 16px;
+      font-weight: 400;
+    }
+    ul {
+      list-style-type: square;
+    }
+    pre {
+      margin: 0;
+      display: inline;
+    }
+  }
