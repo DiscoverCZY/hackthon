@@ -10,3 +10,4 @@ pip install azure-identity azure-keyvault-secrets
 pip install langchain langchain_experimental
 pip install databricks-api
 pip install pymysql
+pip install dbutils
