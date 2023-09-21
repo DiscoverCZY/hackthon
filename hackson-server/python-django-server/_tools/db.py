@@ -108,7 +108,6 @@ class MySQLClient:
         self.execute(sql)
 
 
-# TODO
 connector = MySQLClient(
     host='111.231.166.157',
     port=3306,
