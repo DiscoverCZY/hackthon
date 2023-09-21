@@ -1,7 +1,8 @@
-from .import views
+from .import views,workflow_run_views
 from django.urls import path
 
 urlpatterns = [
+    path("workflow/run", workflow_run_views.WorkflowRunView.as_view()),
     path("chat/", views.ChatModalView.as_view()),
     path("runquery/", views.RunQueryView.as_view()),
 ]
