@@ -15,7 +15,10 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-SERVER_BASE_DIR = Path(BASE_DIR).resolve().parent
+HACKSON_SERVER_DIR = Path(BASE_DIR).resolve().parent
+REPO_DIR = Path(HACKSON_SERVER_DIR).resolve().parent
+HACKSON_UI_DIR = f"{REPO_DIR}/hackson-ui"
+HACKSON_UI_BUILD_DIR=f"{HACKSON_UI_DIR}/build"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -58,7 +61,7 @@ ROOT_URLCONF = "python_server.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        "DIRS": [os.path.join(BASE_DIR, "templates"), HACKSON_UI_BUILD_DIR],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -124,7 +127,7 @@ STATIC_URL = "static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-REACT_UI_DICT = f"{SERVER_BASE_DIR}/static"
+REACT_UI_DICT = f"{HACKSON_UI_BUILD_DIR}/static"
 print(f"react ui dist:{REACT_UI_DICT}")
 
 STATICFILES_DIRS = (REACT_UI_DICT,)
