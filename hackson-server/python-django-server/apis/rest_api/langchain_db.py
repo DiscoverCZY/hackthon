@@ -21,12 +21,9 @@ from langchain.llms import OpenAI
 from langchain.utilities import SQLDatabase
 from langchain_experimental.sql import SQLDatabaseChain
 
-pwd="xiaowoniu@23"
-
-# pwd="!9840925CzYY@"
-print(quote_plus(pwd))
-# db = SQLDatabase.from_uri("mysql+pymysql://pingpong:%219840925CzYY%40@20.239.220.118/test")
-db = SQLDatabase.from_uri("mysql+pymysql://root:xiaowoniu%4023@localhost/world")
+# print(quote_plus("Pingpong_123456"))
+# db = SQLDatabase.from_uri("mysql+pymysql://pingpong:Pingpong_123456@20.239.220.118/customer")
+db = SQLDatabase.from_uri("mysql+pymysql://pingpong:xiaowoniu%4023@localhost/world")
 os.environ["OPENAI_API_KEY"]="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"
 llm = OpenAI(temperature=0, verbose=True)
 
