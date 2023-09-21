@@ -29,6 +29,8 @@ def get_df_from_db(sql):
     db.close()
 
     print("cursor.description中的内容：", columnDes)
+
+    df.query("age>65")
     return df
 
 
@@ -63,14 +65,33 @@ def join_data(df1, df2, id):
 sql1 = "SELECT * FROM customer"
 df1 = get_df_from_db(sql1)
 
-sql2 = "SELECT * FROM payment"
-df2 = get_df_from_db(sql2)
+# sql2 = "SELECT * FROM payment"
+# df2 = get_df_from_db(sql2)
 
 
 
 
-print(join_data(df1,df2,"customer_id"))
+# print(join_data(df1,df2,"customer_id"))
 # display(dff)
 # print(dff.filter("store_id = 2"))
 
 # dff.write
+
+
+def is_odd(n):
+    return n % 2 == 1
+
+
+# tmplist = filter(is_odd, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+# newlist = list(tmplist)
+# print(newlist)
+
+
+# sql1 = "SELECT * FROM customer"
+# df = get_df_from_db(sql1)
+# #items对列进行筛选
+# df.filter(items=['one', 'three'])
+# df.items
+#
+#
+# df = pd.DataFrame([list(i) for i in data], columns=columnNames)
