@@ -1,3 +1,13 @@
+import json
+
+
+def wrap(data=None, code=200, message='success'):
+    payload = None
+    if data is not None:
+        payload = json.loads(json.dumps(data, ensure_ascii=False, default=lambda obj: obj.__dict__))
+    return {'data': payload, 'code': code, 'message': message}
+
+
 class ChatModal:
     def __init__(self):
         self.modal = "chart"
@@ -14,3 +24,11 @@ class Location:
         self.Country = Country
         self.State = State
         self.Population = Population
+
+
+class Workflow:
+    def __init__(self, name: str, cluster_id: str) -> None:
+        self.name = name
+        self.cluster_id = cluster_id
+
+
