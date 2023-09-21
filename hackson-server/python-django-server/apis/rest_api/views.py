@@ -1,10 +1,9 @@
+import json
+
 from django.http import HttpResponse, JsonResponse
 from rest_framework.views import APIView
 
-from django.core import serializers
-import json
-from .models import Customer
-from  _langchain.langchain_db import run_query_with_nlp
+from .models import Location, wrap
 
 response_dct = {
     "data": {
@@ -34,8 +33,15 @@ class RunQueryView(APIView):
         # result["data"] = serializers.serialize('python', customers,ensure_ascii=False)
         return HttpResponse(json.dumps(customers), content_type="application/json")
 
-
     def get_my_model_data(request):
         my_model_data = Location.objects.all()
         data = [{'name': item.name, 'description': item.description} for item in my_model_data]
         return JsonResponse({'data': data})
+
+class WorkflowDeployView(APIView):
+
+    def __pos__(self, request):
+        if request.data is None or len(request.data) == 0:
+            return JsonResponse(wrap(code=500, message='payload is required'))
+        
+        return JsonResponse(wrap(message='workflow has been created'))
