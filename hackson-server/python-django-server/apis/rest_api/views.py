@@ -27,7 +27,6 @@ class ChatModalView(APIView):
 class RunQueryView(APIView):
     def get(self, request):
         result = {"message": 'success', "code": '0', "data": []}
-
         # scripts = Scripts.objects.all()[0:1]
         # result["data"] = serializers.serialize('python', scripts)
         # query_set = models.ChatModal;
@@ -38,10 +37,11 @@ class RunQueryView(APIView):
         data = [{'name': item.name, 'description': item.description} for item in my_model_data]
         return JsonResponse({'data': data})
 
+
 class WorkflowDeployView(APIView):
 
     def __pos__(self, request):
         if request.data is None or len(request.data) == 0:
             return JsonResponse(wrap(code=500, message='payload is required'))
-        
+
         return JsonResponse(wrap(message='workflow has been created'))
