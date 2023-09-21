@@ -11,3 +11,4 @@
 **/__pycache__/**
 hackson-server/static
 **/node_modules/**
+*.bak
