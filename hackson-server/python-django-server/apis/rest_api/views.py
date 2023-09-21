@@ -3,7 +3,8 @@ import json
 from django.http import HttpResponse, JsonResponse
 from rest_framework.views import APIView
 
-from .models import Location, wrap
+from .models import wrap,Customer
+from _langchain.langchain_db import run_query_with_nlp
 
 response_dct = {
     "data": {
@@ -26,17 +27,34 @@ class ChatModalView(APIView):
 
 class RunQueryView(APIView):
     def get(self, request):
+        # if request.data is None or len(request.data) == 0:
+            # return JsonResponse(wrap(code=500, message='payload is required'))
         # result = {"message": 'success', "code": '0', "data": []}
-        question = "get first 10 customer information and show columns id, name, phone, email, address, postal, region, country, sex, age"
+        # question = "get first 10 customer information and show columns id, name, phone, email, address, postal, region, country, sex, age"
+        #question = "get 10 customer who's name start with A and show columns id, name, phone, email, address, postal, region, country, sex, age"
+        question_suffix = "and show columns id, name, phone, email, address, postal, region, country, sex, age"
         customers = run_query_with_nlp(question)
         print("test====", customers.__len__)
         # result["data"] = serializers.serialize('python', customers,ensure_ascii=False)
-        return HttpResponse(json.dumps(customers), content_type="application/json")
+        return JsonResponse(wrap(customers))
+    
+    def post(self, request):
+        if request.data is None or len(request.data) == 0:
+            return JsonResponse(wrap(code=500, message='payload is required'))
+        question = str(request.data.get('question'))
+        # result = {"message": 'success', "code": '0', "data": []}
+        # question = "get first 10 customer information and show columns id, name, phone, email, address, postal, region, country, sex, age"
+        #question = "get 10 customer who's name start with A and show columns id, name, phone, email, address, postal, region, country, sex, age"
+        question_suffix = "and show columns id, name, phone, email, address, postal, region, country, sex, age"
+        final_question = question + " " + question_suffix
+        print(final_question)
+        customers = run_query_with_nlp(final_question)
+        # result["data"] = serializers.serialize('python', customers,ensure_ascii=False)
+        return JsonResponse(wrap(customers))
 
-    def get_my_model_data(request):
-        my_model_data = Location.objects.all()
-        data = [{'name': item.name, 'description': item.description} for item in my_model_data]
-        return JsonResponse({'data': data})
+        
+        # return JsonResponse(wrap(message='workflow has been created'))
+
 
 class WorkflowDeployView(APIView):
 
