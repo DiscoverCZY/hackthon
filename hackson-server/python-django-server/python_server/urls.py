@@ -22,6 +22,8 @@ from django.urls import path, re_path
 
 urlpatterns = [
     path("", views.react),
-    path("dashboard/default", views.react),
-    path("rest_api/", include("apis.rest_api.urls")),
+    path("home", views.react),
+    path("workflow", views.react),
+    path("data-visualization", views.react),
+    path("api/", include("apis.rest_api.urls")),
 ]
