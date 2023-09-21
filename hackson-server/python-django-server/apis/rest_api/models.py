@@ -7,10 +7,20 @@ class ChatModal:
         self.data = [30, 40]
 
 
-class Location:
-    def __init__(self, ID, City, Country, State, Population):
-        self.ID = ID
-        self.City = City
-        self.Country = Country
-        self.State = State
-        self.Population = Population
+class Customer:
+    def __init__(self, id, name, phone, email, address, postal, region, country, sex, age):
+        self.id = id
+        self.name = name
+        self.phone = phone
+        self.email = email
+        self.address = address
+        self.postal = postal
+        self.region = region
+        self.country = country
+        self.sex = sex
+        self.age = age
+        # self.currency = currency
+        # self.level = level
+        # self.bank_count = bank_count
+        # self.description = description
+        # self.register_date = register_date

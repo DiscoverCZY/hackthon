@@ -3,7 +3,8 @@ from rest_framework.views import APIView
 
 from django.core import serializers
 import json
-from .models import Location
+from .models import Customer
+from  _langchain.langchain_db import run_query_with_nlp
 
 response_dct = {
     "data": {
@@ -26,12 +27,12 @@ class ChatModalView(APIView):
 
 class RunQueryView(APIView):
     def get(self, request):
-        result = {"message": 'success', "code": '0', "data": []}
-
-        # scripts = Scripts.objects.all()[0:1]
-        # result["data"] = serializers.serialize('python', scripts)
-        # query_set = models.ChatModal;
-        return HttpResponse(json.dumps(result), content_type="application/json")
+        # result = {"message": 'success', "code": '0', "data": []}
+        question = "get first 10 customer information and show columns id, name, phone, email, address, postal, region, country, sex, age"
+        customers = run_query_with_nlp(question)
+        print("test====", customers.__len__)
+        # result["data"] = serializers.serialize('python', customers,ensure_ascii=False)
+        return HttpResponse(json.dumps(customers), content_type="application/json")
 
 
     def get_my_model_data(request):
